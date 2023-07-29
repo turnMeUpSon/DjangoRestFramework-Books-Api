@@ -1,14 +1,13 @@
-FROM python:3.9-alpine3.16
+FROM python
 
-COPY requirements.txt /temp/requirements.txt
-COPY backend /backend
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWEITEBYTECODE 1
+
 WORKDIR /backend
+
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
+
 EXPOSE 8000
 
-RUN apk add postgresql-client build-base postgresql-dev
-
-RUN pip install -r /temp/requirements.txt
-
-RUN adduser --disabled-password backend-user
-
-USER backend-user
+COPY . .
