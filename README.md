@@ -1,1 +1,1 @@
-# django-books-api
+# Django REST framework books-api
