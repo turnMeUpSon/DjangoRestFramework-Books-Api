@@ -1,6 +1,7 @@
 from django.test import TestCase
-from store.models import Book
-from store.serializers import BookSerializer
+from store.models import Book, UserBookRelation
+from store.serializers import BookSerializer, UserBookRelationSerializer
+from django.contrib.auth.models import User
 
 class BookSerializerTestCase(TestCase):
     def setUp(self):
@@ -31,3 +32,20 @@ class BookSerializerTestCase(TestCase):
             }
         ]
         self.assertEqual(excepcted_data, data)
+
+
+class UserBookRelationSerializerTestCase(TestCase):
+    def setUp(self):
+        self.user = User.objects.create(username='test_username')
+        self.book_1 = Book.objects.create(name='Test book 1', price=25, author='Author 1')
+        self.relation = UserBookRelation.objects.create(user=self.user, book=self.book_1, like=True, in_bookmarks=True, rate=4)
+    
+    def test_ok(self):
+        data = UserBookRelationSerializer(self.relation).data
+        excepted_data = {
+            'book': self.book_1.id,
+            'like': True,
+            'in_bookmarks': True,
+            'rate': 4
+        }
+        self.assertEqual(excepted_data, data)
