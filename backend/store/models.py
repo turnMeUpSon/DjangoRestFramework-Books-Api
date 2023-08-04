@@ -5,14 +5,14 @@ from django.contrib.auth.models import User
 class Book(models.Model):
     name = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=7, decimal_places=2)
+    discount = models.DecimalField(max_digits=4, decimal_places=2, default=0.00)
     author = models.CharField(max_length=255)  
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='my_books')
     readers = models.ManyToManyField(User, through='UserBookRelation', related_name='books')
 
     def __str__(self) -> str:
         return f'Id {self.id}: {self.name}'
-
-
+    
 class UserBookRelation(models.Model):
     RATE_CHOICES = (
         (1, 'Ok'),
