@@ -4,3 +4,4 @@ psycopg2
 coverage
 django-filter
 social-auth-app-django
+django-debug-toolbar
