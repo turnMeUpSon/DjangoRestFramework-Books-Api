@@ -34,6 +34,7 @@ You need to have docker desktop is installed on your computer
 2.  ```git clone https://github.com/turnMeUpSon/django-books-api.git```
 3. ```docker-compose build```
 4. ```docker-compose up```
+5. Example of response:  ```[  {  "id":  1,  "name":  "Perfume",  "price":  "15.00",  "discount":  "15.00",  "discounted_price":  "12.75",  "author":  "Patrick Suskind",  "annotated_likes":  3,  "annotated_in_bookmarks_count":  1,  "mark":  "2.75",  "max_rating":  "4.00",  "min_rating":  "1.00",  "owner_name":  "user1",  "readers":  [  {  "first_name":  "Jack",  "last_name":  "Grealish"  },  {  "first_name":  "Ian",  "last_name":  "Miller"  },  {  "first_name":  "Fabio",  "last_name":  "Tavares"  },  {  "first_name":  "Blanco",  "last_name":  "Leopard"  }  ]  },  {  "id":  2,  "name":  "The Collector",  "price":  "1000.00",  "discount":  "0.00",  "discounted_price":  "1000.00",  "author":  "John Fowles",  "annotated_likes":  3,  "annotated_in_bookmarks_count":  2,  "mark":  "4.00",  "max_rating":  "5.00",  "min_rating":  "3.00",  "owner_name":  "turnMeUpSon",  "readers":  [  {  "first_name":  "Jack",  "last_name":  "Grealish"  },  {  "first_name":  "Ian",  "last_name":  "Miller"  },  {  "first_name":  "Fabio",  "last_name":  "Tavares"  },  {  "first_name":  "Blanco",  "last_name":  "Leopard"  }  ]  },  {  "id":  3,  "name":  "The Alchemist",  "price":  "30.00",  "discount":  "0.00",  "discounted_price":  "30.00",  "author":  "Paulo Coelho",  "annotated_likes":  0,  "annotated_in_bookmarks_count":  0,  "mark":  null,  "max_rating":  null,  "min_rating":  null,  "owner_name":  null,  "readers":  []  },  {  "id":  4,  "name":  "Programming in Python 3",  "price":  "150.00",  "discount":  "0.00",  "discounted_price":  "150.00",  "author":  "Mark Summerfield",  "annotated_likes":  0,  "annotated_in_bookmarks_count":  0,  "mark":  null,  "max_rating":  null,  "min_rating":  null,  "owner_name":  "admin",  "readers":  []  },  {  "id":  5,  "name":  "Writer, Sailor, Soldier, Spy: Ernest Hemingway's Secret Adventures",  "price":  "700.00",  "discount":  "0.00",  "discounted_price":  "700.00",  "author":  "Nicholas Reynolds",  "annotated_likes":  1,  "annotated_in_bookmarks_count":  1,  "mark":  "2.00",  "max_rating":  "2.00",  "min_rating":  "2.00",  "owner_name":  "turnMeUpSon",  "readers":  [  {  "first_name":  "Ian",  "last_name":  "Miller"  }  ]  }  ]```
 
 
 ## Running the tests
@@ -89,5 +90,7 @@ Destroying test database for alias 'default'...`
   
 
 ## License
+
+  
 
 This project is licensed under the MIT License
