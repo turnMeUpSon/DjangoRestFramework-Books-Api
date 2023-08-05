@@ -12,7 +12,7 @@ class BooksSerializer(ModelSerializer):
     discounted_price = serializers.DecimalField(max_digits=7, decimal_places=2, read_only=True)
     annotated_likes = serializers.IntegerField(read_only=True)
     annotated_in_bookmarks_count = serializers.IntegerField(read_only=True)
-    rating = serializers.DecimalField(max_digits=3, decimal_places=2, read_only=True)
+    mark = serializers.DecimalField(max_digits=3, decimal_places=2, read_only=True)
     max_rating = serializers.DecimalField(max_digits=3, decimal_places=2, read_only=True)
     min_rating = serializers.DecimalField(max_digits=3, decimal_places=2, read_only=True)
     owner_name = serializers.CharField(read_only=True)
@@ -21,7 +21,7 @@ class BooksSerializer(ModelSerializer):
     class Meta:
         model = Book
         fields = ('id', 'name', 'price', 'discount', 'discounted_price', 'author', 'annotated_likes', 
-                'annotated_in_bookmarks_count', 'rating', 'max_rating', 'min_rating', 'owner_name', 'readers')
+                'annotated_in_bookmarks_count', 'mark', 'max_rating', 'min_rating', 'owner_name', 'readers')
     
     
 class UserBookRelationSerializer(ModelSerializer):

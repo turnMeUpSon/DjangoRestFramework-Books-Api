@@ -14,7 +14,7 @@ class BookViewSet(ModelViewSet):
     queryset = Book.objects.all().annotate(
             annotated_likes=Count(Case(When(userbookrelation__like=True, then=1))),
             annotated_in_bookmarks_count=Count(Case(When(userbookrelation__in_bookmarks=True, then=1))),
-            rating=Avg('userbookrelation__rate'),
+            mark=Avg('userbookrelation__rate'),
             max_rating=Max('userbookrelation__rate'),
             min_rating=Min('userbookrelation__rate'),
             discounted_price=ExpressionWrapper(F('price') * (1 - F('discount') / 100), output_field=DecimalField()),

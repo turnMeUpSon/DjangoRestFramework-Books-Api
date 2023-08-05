@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'social_django',
     'debug_toolbar',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

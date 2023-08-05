@@ -22,8 +22,9 @@ class BookSerializerTestCase(TestCase):
                                         rate=5)
         UserBookRelation.objects.create(user=user2, book=book_1, like=True, in_bookmarks=True,
                                         rate=5)
-        UserBookRelation.objects.create(user=user3, book=book_1, like=True, in_bookmarks=True,
-                                        rate=4)
+        user_book_3 = UserBookRelation.objects.create(user=user3, book=book_1, like=True, rate=4)
+        user_book_3.rate = 4
+        user_book_3.save()
 
         UserBookRelation.objects.create(user=user1, book=book_2, like=True, in_bookmarks=True,
                                         rate=3)
@@ -34,7 +35,7 @@ class BookSerializerTestCase(TestCase):
         books = Book.objects.all().annotate(
             annotated_likes=Count(Case(When(userbookrelation__like=True, then=1))),
             annotated_in_bookmarks_count=Count(Case(When(userbookrelation__in_bookmarks=True, then=1))),
-            rating=Avg('userbookrelation__rate'),
+            mark=Avg('userbookrelation__rate'),
             max_rating=Max('userbookrelation__rate'),
             min_rating=Min('userbookrelation__rate'),
             discounted_price=ExpressionWrapper(F('price') * (1 - F('discount') / 100), output_field=DecimalField()),
@@ -50,8 +51,8 @@ class BookSerializerTestCase(TestCase):
                 'discounted_price': '22.50',
                 'author': 'Author 1',
                 'annotated_likes': 3,
-                'annotated_in_bookmarks_count': 3,
-                'rating': '4.67',
+                'annotated_in_bookmarks_count': 2,
+                'mark': '4.67',
                 'max_rating': '5.00',
                 'min_rating': '4.00',
                 'owner_name': 'user1',
@@ -79,7 +80,7 @@ class BookSerializerTestCase(TestCase):
                 'author': 'Author 2',
                 'annotated_likes': 2,
                 'annotated_in_bookmarks_count': 2,
-                'rating': '3.50',
+                'mark': '3.50',
                 'max_rating': '4.00',
                 'min_rating': '3.00',
                 'owner_name': None,
